@@ -1,0 +1,224 @@
+{% extends "base.html" %} {% block title %}Retail{% endblock %}
+
+{% block content %}
+<br />
+<h2 align="center"><u><strong>Product Retail</strong></u></h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-right">
+      <!-- Making function (add)-->
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#add" style="border-radius: 25px; margin-right: 8px;">
+      <strong>Add</strong>
+      </button>
+      <div class="modal fade" id="add" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="add" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="Title">Add Stock to Table</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-left">
+              <p>* = Required Field</p>
+              <form method="POST">
+                <div class="form-group">
+                  <label for="name">*Name</label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    id="name" 
+                    name="name" 
+                    placeholder="Enter Name"
+                  />
+                </div>
+                <!--Other form fields-->
+                <div class="form-group">
+                  <label for="numberInStock">*Number in Stock</label>
+                  <input 
+                    type="number" 
+                    class="form-control" 
+                    id="numberInStock" 
+                    name="numberInStock" 
+                    placeholder="Enter number"
+                    min="0"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="unitPrice">*Unit Price</label>
+                  <input 
+                    type="number" 
+                    class="form-control" 
+                    id="unitPrice" 
+                    name="unitPrice" 
+                    placeholder="Enter Price"
+                    step="any"
+                    min="0"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="stockSold">*Stock Sold</label>
+                  <input 
+                    type="number" 
+                    class="form-control" 
+                    id="stockSold" 
+                    name="stockSold" 
+                    placeholder="Enter number"
+                    min="0"
+                  />
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-success">Confirm Changes</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Making Update function-->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update" style="border-radius: 25px; margin-right: 8px;">
+        <strong>Update</strong>
+      </button>
+      <div class="modal fade" id="update" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="update" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="title">Update Stock from Table</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-left">
+              <form method="POST">
+                <div class="form-group">
+                  <label for="u_name">*Name of Stock</label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    id="u_name" 
+                    name="u_name" 
+                    placeholder="Enter Name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="u_numberInStock">Number in Stock</label>
+                  <input 
+                    type="number" 
+                    class="form-control" 
+                    id="u_numberInStock" 
+                    name="u_numberInStock" 
+                    placeholder="Enter number"
+                    min="0"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="u_unitPrice">Unit Price</label>
+                  <input 
+                    type="number" 
+                    class="form-control" 
+                    id="u_unitPrice" 
+                    name="u_unitPrice" 
+                    placeholder="Enter Price"
+                    step="any"
+                    min="0"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="u_stockSold">Stock Sold</label>
+                  <input 
+                    type="number" 
+                    class="form-control" 
+                    id="u_stockSold" 
+                    name="u_stockSold" 
+                    placeholder="Enter number"
+                    min="0"
+                  />
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Confirm Changes</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Making Delete function-->
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete" style="border-radius: 25px;">
+        <strong>Delete</strong>
+      </button>
+      <div class="modal fade" id="delete" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="title">Delete Stock from Table</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-left">
+              <form method="POST">
+                <div class="form-group">
+                  <label for="d_name">Name of Stock</label>
+                  <input 
+                    type="text" 
+                    class="form-control" 
+                    id="d_name" 
+                    name="d_name" 
+                    placeholder="Enter Name"
+                  />
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-danger">Confirm Changes</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>  
+</div>
+<br />
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <table class="table table-striped table-dark table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Number In Stock</th>
+            <th scope="col">Unit Price</th>
+            <th scope="col">Stock Sold </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in data %}
+          <tr>
+            <th scope="row">{{ i[0] }}</th>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>£{{ "{:.2f}".format(i[3]) }}</td>
+            <td>{{ i[4] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="col-4">
+      <div class="card text-white bg-dark mb-3" style="border-radius: 20px;">
+        <div class="card-body">
+          <h5 class="card-title">Recommended Stock</h5>
+          <p class="card-text">- {{ a }}<br> - {{ b }}<br> - {{ c }}<br></p>
+        </div>
+      </div>  
+    </div>  
+  </div>
+</div>
+{% endblock %}
