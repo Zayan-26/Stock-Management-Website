@@ -1,5 +1,4 @@
--- This file is the main basis for my website
+-- This file is the file that runs the application through flask
 
--The main.py stays on the outmost folder
+- The src folder contains the python files for the backend of the website and the templates folder contains all the front end code
 
--All the html folders must go in a templates folder
